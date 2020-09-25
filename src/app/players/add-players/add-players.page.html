@@ -1,0 +1,87 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title class="ion-text-start">Ajouter un joueur</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #addJoueurs="ngForm">
+  <ion-card>
+    <ion-card-content>
+    <ion-row>
+    <ion-col size="6">
+    <input
+    type="text"
+    id="newJoueur"
+    name="nom"
+    #nom="ngModel"
+    class="inputWidth"
+    [(ngModel)]="newJoueur.nom"
+    required
+    placeholder="Nom du joueur"
+    >
+  </ion-col>
+  <ion-col size="6">
+    <input
+    type="text"
+    id="newJoueur"
+    name="prenom"
+    #prenom="ngModel"
+    class="inputWidth"
+    [(ngModel)]="newJoueur.prenom"
+    required
+    placeholder="Prénom du joueur"
+    >
+  </ion-col>
+  </ion-row>
+  <ion-row>
+     <ion-col size="3">
+    <input
+    type="text"
+    id="newJoueur"
+    name="email"
+    #email="ngModel"
+    class="inputWidth"
+    [(ngModel)]="newJoueur.email"
+    required
+    placeholder="Email du joueur"
+    >
+  </ion-col>
+  <ion-col size="3">
+    <input
+    type="password"
+    id="newJoueur" 
+    name="password" 
+    #password="ngModel"
+     [(ngModel)]='newJoueur.password'
+     required
+     placeholder="mot de passe">
+  </ion-col>
+    <ion-col size="3">
+    <input
+    type="text"
+    id="newJoueur"
+    name="tel"
+    #tel="ngModel"
+    class="inputWidth"
+    [(ngModel)]="newJoueur.tel"
+    required
+    placeholder="Téléphone du joueur"
+    >
+    </ion-col>
+  </ion-row>
+    <ion-list>
+  <label for="poste">Postes</label>
+  <ion-item *ngFor="let p of poste; let i=index">
+    <ion-label>{{p.nom}}</ion-label>
+    <input type="radio" [value]="p.nom" class="radio" (click)="PosteValue(p.nom)" slot="end">
+  </ion-item>
+</ion-list>
+  </ion-card-content>
+</ion-card>
+<ion-button expand="full" (click)='addJoueur(nom.value, email.value, tel.value, prenom.value, password.value)'>Valider</ion-button>
+</form>
+</ion-content>
